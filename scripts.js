@@ -1,3 +1,6 @@
+const buttons = document.querySelector('.lowerArea');
+const answer = document.querySelector('.answer');
+
 function sum(a, b) {
     return a + b;
 }
@@ -30,3 +33,14 @@ function operate(operator, firstNumber, secondNumber){
 let firstNumber;
 let secondNumber;
 let operator;
+
+buttons.addEventListener('click', (e) => {
+    let getNumber = e.target.textContent;
+    console.log(getNumber);
+    answer.textContent += getNumber;
+
+    firstNumber = Number(answer.textContent);
+    console.log('first number:' + firstNumber);
+})
+
+
