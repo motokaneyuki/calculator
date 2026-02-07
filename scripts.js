@@ -30,9 +30,11 @@ function operate(operator, firstNumber, secondNumber){
     }
 }
 
-let firstNumber;
-let secondNumber;
-let operator;
+let expression = {
+    firstNumber: null,
+    operator: null,
+    secondNumber: null,
+}
 
 digitButtons.forEach(button => {
     button.addEventListener('click', (e) => {
@@ -40,8 +42,7 @@ digitButtons.forEach(button => {
         console.log(getNumber);
         answer.textContent += getNumber;
 
-        firstNumber = Number(answer.textContent);
-        console.log('first number:' + firstNumber);
+        expression.firstNumber = Number(answer.textContent);
+        console.log(expression.firstNumber);
     })
 })
-
