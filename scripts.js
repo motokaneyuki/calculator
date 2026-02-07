@@ -1,4 +1,4 @@
-const buttons = document.querySelector('.lowerArea');
+const digitButtons = document.querySelectorAll('.digits');
 const answer = document.querySelector('.answer');
 
 function sum(a, b) {
@@ -34,13 +34,14 @@ let firstNumber;
 let secondNumber;
 let operator;
 
-buttons.addEventListener('click', (e) => {
-    let getNumber = e.target.textContent;
-    console.log(getNumber);
-    answer.textContent += getNumber;
+digitButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        let getNumber = e.target.textContent;
+        console.log(getNumber);
+        answer.textContent += getNumber;
 
-    firstNumber = Number(answer.textContent);
-    console.log('first number:' + firstNumber);
+        firstNumber = Number(answer.textContent);
+        console.log('first number:' + firstNumber);
+    })
 })
-
 
