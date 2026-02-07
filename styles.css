@@ -88,7 +88,7 @@ button:hover {
 .equalButton {
     background-color: #F4A8A2;
     color: #292929;
-    box-shadow: 2px 2px 4px #414141;
+    box-shadow: inset 2px 2px 4px #F1BCBC;
 }
 
 .equalButton:hover {
