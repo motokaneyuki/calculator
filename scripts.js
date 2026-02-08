@@ -44,6 +44,15 @@ let expression = {
 // to get the number values
 digitButtons.forEach(button => {
     button.addEventListener('click', (e) => {
+        if (answer.textContent == expression.equalValue){
+            expression.equalValue = null;
+            expression.firstNumber = null;
+            expression.operator = '';
+            expression.secondNumber = null;
+            answer.textContent = '';
+            calculations.textContent = '';
+        }
+
         let getNumber = e.target.textContent;
 
         if (!expression.operator){
