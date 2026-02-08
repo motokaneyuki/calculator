@@ -54,6 +54,10 @@ digitButtons.forEach(button => {
 // to get the operator
 operatorButtons.forEach(button => {
     button.addEventListener('click', (e) => {
+        if (expression.firstNumber === null){
+            return;
+        }
+
         let getOperator = e.target.textContent;
         console.log(getOperator);
         expression.operator = getOperator;
