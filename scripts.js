@@ -1,6 +1,7 @@
 const digitButtons = document.querySelectorAll('.digits');
 const operatorButtons = document.querySelectorAll('.operators');
 const equalButton = document.querySelector('.equalButton');
+const allClear = document.querySelector('.allClear');
 const answer = document.querySelector('.answer');
 const calculations = document.querySelector('.calculations');
 
@@ -111,4 +112,13 @@ equalButton.addEventListener('click', () => {
     answer.textContent = fixedAnswer;
     calculations.textContent = `${expression.firstNumber} ${expression.operator} ${expression.secondNumber}`;
     expression.equalValue = fixedAnswer;
+})
+
+allClear.addEventListener('click', () => {
+    expression.firstNumber = null;
+    expression.operator = '';
+    expression.secondNumber = null;
+    expression.equalValue = null;
+    calculations.textContent = '';
+    answer.textContent = '';
 })
