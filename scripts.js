@@ -98,6 +98,8 @@ operatorButtons.forEach(button => {
             let expressionAnswer = operate(expression.operator, expression.firstNumber, expression.secondNumber);
             let fixedAnswer = Number(expressionAnswer.toFixed(3));
             expression.firstNumber = fixedAnswer;
+            expression.secondNumber = null;
+            expression.operator = '';
         }
 
 
