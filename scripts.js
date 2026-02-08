@@ -58,18 +58,29 @@ digitButtons.forEach(button => {
         let getNumber = e.target.textContent;
 
         if (!expression.operator){
+            // stops 2 periods
             if (getNumber == '.' && answer.textContent.includes('.')){
                 return;
+            }
+            // backspace
+            if (getNumber == 'C'){
+                answer.textContent = answer.textContent.slice(0, -1);
+                getNumber = '';
             }
 
             answer.textContent += getNumber;
             expression.firstNumber = Number(answer.textContent);
         } else {
+            // clears screen when inputting second number
             if (expression.secondNumber === null){
                 answer.textContent = '';
             }
             if (getNumber == '.' && answer.textContent.includes('.')){
                 return;
+            }
+            if (getNumber == 'C'){
+                answer.textContent = answer.textContent.slice(0, -1);
+                getNumber = '';
             }
             
             answer.textContent += getNumber;
@@ -85,7 +96,7 @@ operatorButtons.forEach(button => {
             return;
         }
 
-        // if equal button is clicked already with computation value
+        // if equal button is clicked already with computation value, do:
         if (expression.equalValue !== null){
             expression.firstNumber = expression.equalValue;
             expression.equalValue = null;
@@ -93,7 +104,7 @@ operatorButtons.forEach(button => {
             calculations.textContent = `${expression.firstNumber}`;
         }
 
-        // if operator button is clicked with first&second values
+        // if operator button is clicked with first&second values, do:
         if (expression.firstNumber !== null && expression.operator !== '' && expression.secondNumber !== null) {
             let expressionAnswer = operate(expression.operator, expression.firstNumber, expression.secondNumber);
             let fixedAnswer = Number(expressionAnswer.toFixed(3));
