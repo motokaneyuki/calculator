@@ -66,6 +66,10 @@ digitButtons.forEach(button => {
             if (getNumber == 'C'){
                 answer.textContent = answer.textContent.slice(0, -1);
                 getNumber = '';
+                if (answer.textContent == ''){
+                    expression.firstNumber = null;
+                    return;
+                }
             }
 
             answer.textContent += getNumber;
@@ -81,6 +85,10 @@ digitButtons.forEach(button => {
             if (getNumber == 'C'){
                 answer.textContent = answer.textContent.slice(0, -1);
                 getNumber = '';
+                if (answer.textContent == ''){
+                    expression.secondNumber = null;
+                    return;
+                }
             }
             
             answer.textContent += getNumber;
