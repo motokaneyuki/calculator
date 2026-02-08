@@ -86,7 +86,8 @@ operatorButtons.forEach(button => {
         // if operator button is clicked with first&second values
         if (expression.firstNumber !== null && expression.operator !== '' && expression.secondNumber !== null) {
             let expressionAnswer = operate(expression.operator, expression.firstNumber, expression.secondNumber);
-            expression.firstNumber = expressionAnswer;
+            let fixedAnswer = Number(expressionAnswer.toFixed(3));
+            expression.firstNumber = fixedAnswer;
         }
 
 
@@ -106,7 +107,8 @@ equalButton.addEventListener('click', () => {
         }
     
     let expressionAnswer = operate(expression.operator, expression.firstNumber, expression.secondNumber);
-    answer.textContent = expressionAnswer;
+    let fixedAnswer = Number(expressionAnswer.toFixed(3));
+    answer.textContent = fixedAnswer;
     calculations.textContent = `${expression.firstNumber} ${expression.operator} ${expression.secondNumber}`;
-    expression.equalValue = expressionAnswer;
+    expression.equalValue = fixedAnswer;
 })
