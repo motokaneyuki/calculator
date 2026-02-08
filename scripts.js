@@ -2,6 +2,7 @@ const digitButtons = document.querySelectorAll('.digits');
 const operatorButtons = document.querySelectorAll('.operators');
 const equalButton = document.querySelector('.equalButton');
 const answer = document.querySelector('.answer');
+const calculations = document.querySelector('.calculations');
 
 function sum(a, b) {
     return a + b;
@@ -102,4 +103,5 @@ equalButton.addEventListener('click', () => {
     
     let expressionAnswer = operate(expression.operator, expression.firstNumber, expression.secondNumber);
     answer.textContent = expressionAnswer;
+    calculations.textContent = `${expression.firstNumber} ${expression.operator} ${expression.secondNumber}`;
 })
