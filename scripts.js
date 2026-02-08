@@ -45,6 +45,7 @@ let expression = {
 // to get the number values
 digitButtons.forEach(button => {
     button.addEventListener('click', (e) => {
+        // when digit clicked again after equals, clear values
         if (answer.textContent == expression.equalValue){
             expression.equalValue = null;
             expression.firstNumber = null;
@@ -57,12 +58,20 @@ digitButtons.forEach(button => {
         let getNumber = e.target.textContent;
 
         if (!expression.operator){
+            if (getNumber == '.' && answer.textContent.includes('.')){
+                return;
+            }
+
             answer.textContent += getNumber;
             expression.firstNumber = Number(answer.textContent);
         } else {
             if (expression.secondNumber === null){
                 answer.textContent = '';
             }
+            if (getNumber == '.' && answer.textContent.includes('.')){
+                return;
+            }
+            
             answer.textContent += getNumber;
             expression.secondNumber = Number(answer.textContent);
         }    
