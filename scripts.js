@@ -71,10 +71,13 @@ operatorButtons.forEach(button => {
             expression.firstNumber = expression.equalValue;
             expression.equalValue = null;
             expression.secondNumber = null;
+            calculations.textContent = `${expression.firstNumber}`;
         }
 
         let getOperator = e.target.textContent;
         expression.operator = getOperator;
+        answer.textContent = '';
+        calculations.textContent = `${expression.firstNumber} ${expression.operator}`;
     })
 })
 
