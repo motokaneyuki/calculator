@@ -83,6 +83,13 @@ operatorButtons.forEach(button => {
             calculations.textContent = `${expression.firstNumber}`;
         }
 
+        // if operator button is clicked with first&second values
+        if (expression.firstNumber !== null && expression.operator !== '' && expression.secondNumber !== null) {
+            let expressionAnswer = operate(expression.operator, expression.firstNumber, expression.secondNumber);
+            expression.firstNumber = expressionAnswer;
+        }
+
+
         let getOperator = e.target.textContent;
         expression.operator = getOperator;
         answer.textContent = '';
