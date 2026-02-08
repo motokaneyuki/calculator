@@ -1,5 +1,6 @@
 const digitButtons = document.querySelectorAll('.digits');
 const operatorButtons = document.querySelectorAll('.operators');
+const equalButton = document.querySelector('.equalButton');
 const answer = document.querySelector('.answer');
 
 function sum(a, b) {
@@ -20,17 +21,18 @@ function divide(a, b) {
 
 function operate(operator, firstNumber, secondNumber){
     switch(operator) {
-        case 'sum':
+        case '+':
             return sum(firstNumber, secondNumber);
-        case 'subtract':
+        case '-':
             return subtract(firstNumber, secondNumber);
-        case 'multiply':
+        case 'x':
             return multiply(firstNumber, secondNumber);
-        case 'divide':
+        case '/':
             return divide(firstNumber, secondNumber);
     }
 }
 
+// to store values
 let expression = {
     firstNumber: null,
     operator: '',
@@ -89,4 +91,15 @@ operatorButtons.forEach(button => {
         })    
 
     })
+})
+
+equalButton.addEventListener('click', () => {
+    if (expression.firstNumber === null 
+        || expression.firstNumber === null 
+        || expression.operator === ''){
+            return;
+        }
+    
+    let expressionAnswer = operate(expression.operator, expression.firstNumber, expression.secondNumber);
+    answer.textContent = expressionAnswer;
 })
