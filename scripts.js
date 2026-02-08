@@ -38,20 +38,25 @@ let expression = {
     firstNumber: null,
     operator: '',
     secondNumber: null,
+    equalValue: null,
 }
 
-// to get the first number
-function firstListener(event){
-    let getNumber = event.target.textContent;
-    console.log(getNumber);
-    answer.textContent += getNumber;
-
-    expression.firstNumber = Number(answer.textContent);
-    console.log(expression.firstNumber);  
-}
-
+// to get the number values
 digitButtons.forEach(button => {
-    button.addEventListener('click', firstListener);
+    button.addEventListener('click', (e) => {
+        let getNumber = e.target.textContent;
+
+        if (!expression.operator){
+            answer.textContent += getNumber;
+            expression.firstNumber = Number(answer.textContent);
+        } else {
+            if (expression.secondNumber === null){
+                answer.textContent = '';
+            }
+            answer.textContent += getNumber;
+            expression.secondNumber = Number(answer.textContent);
+        }    
+    });
 })
 
 // to get the operator
@@ -61,42 +66,22 @@ operatorButtons.forEach(button => {
             return;
         }
 
+        // if equal button is clicked already with computation value
+        if (expression.equalValue !== null){
+            expression.firstNumber = expression.equalValue;
+            expression.equalValue = null;
+            expression.secondNumber = null;
+        }
+
         let getOperator = e.target.textContent;
-        console.log(getOperator);
         expression.operator = getOperator;
-        console.log(expression.operator);
-
-        // to keep the first number as is
-        digitButtons.forEach(button => {
-            button.removeEventListener('click', firstListener);
-        })
-
-        let tempFirstNumber = expression.firstNumber;
-        console.log("temp", tempFirstNumber);
-    
-        // to get the second number
-        digitButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                if (expression.secondNumber === null){
-                    answer.textContent = '';
-                }
-                
-                let getNumber = e.target.textContent;
-                console.log(getNumber);
-                answer.textContent += getNumber;
-
-                expression.secondNumber = Number(answer.textContent);
-                expression.firstNumber = tempFirstNumber;
-                console.log("exp", expression);
-            })
-        })    
-
     })
 })
 
+// to get the computation value
 equalButton.addEventListener('click', () => {
     if (expression.firstNumber === null 
-        || expression.firstNumber === null 
+        || expression.secondNumber === null 
         || expression.operator === ''){
             return;
         }
@@ -104,4 +89,5 @@ equalButton.addEventListener('click', () => {
     let expressionAnswer = operate(expression.operator, expression.firstNumber, expression.secondNumber);
     answer.textContent = expressionAnswer;
     calculations.textContent = `${expression.firstNumber} ${expression.operator} ${expression.secondNumber}`;
+    expression.equalValue = expressionAnswer;
 })
