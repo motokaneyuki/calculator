@@ -57,6 +57,15 @@ digitButtons.forEach(button => {
 
         let getNumber = e.target.textContent;
 
+        if (answer.textContent.length == 9){
+            if (getNumber == 'C'){
+                answer.textContent = answer.textContent.slice(0, -1);
+                return;    
+            }
+            alert('Maximum input is 9 digits')
+            return;
+        }
+
         if (!expression.operator){
             // stops 2 periods
             if (getNumber == '.' && answer.textContent.includes('.')){
