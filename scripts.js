@@ -34,7 +34,6 @@ function operate(operator, firstNumber, secondNumber){
     }
 }
 
-// to store values
 let expression = {
     firstNumber: null,
     operator: '',
@@ -42,7 +41,6 @@ let expression = {
     equalValue: null,
 }
 
-// to get the number values
 digitButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         // when digit clicked again after equals, clear values
@@ -106,7 +104,6 @@ digitButtons.forEach(button => {
     });
 })
 
-// to get the operator
 operatorButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         if (expression.firstNumber === null){
@@ -138,7 +135,6 @@ operatorButtons.forEach(button => {
     })
 })
 
-// to get the computation value
 equalButton.addEventListener('click', () => {
     if (expression.firstNumber === null 
         || expression.secondNumber === null 
@@ -147,7 +143,13 @@ equalButton.addEventListener('click', () => {
         }
     
     let expressionAnswer = operate(expression.operator, expression.firstNumber, expression.secondNumber);
-    let fixedAnswer = Number(expressionAnswer.toFixed(3));
+
+    let fixedAnswer;
+    if (expressionAnswer.toString().length > 9){
+        fixedAnswer = expressionAnswer.toExponential(0);
+    } else {
+        fixedAnswer = Number(expressionAnswer.toFixed(3));
+    }
     answer.textContent = fixedAnswer;
     calculations.textContent = `${expression.firstNumber} ${expression.operator} ${expression.secondNumber}`;
     expression.equalValue = fixedAnswer;
