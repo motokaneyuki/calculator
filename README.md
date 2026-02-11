@@ -1,6 +1,8 @@
 # calculator
 Live preview can be found <a href="http://motokaneyuki.github.io/calculator">here</a>.
 
+<img src="images/calcScreenshot.png" alt="A calculator that has 1 plus 2 equals 3 on the screen." style="width:50%; height:auto;"/>
+
 # Overview
 This is a fully functional web-based calculator built as the final milestone for <a href="https://www.theodinproject.com/">The Odin Project’s</a> Foundations path. It was designed to handle everyday math and built to prevent errors and handle complex sequences without crashing.
 
