@@ -82,6 +82,9 @@ digitButtons.forEach(button => {
             answer.textContent += getNumber;
             expression.firstNumber = Number(answer.textContent);
         } else {
+            if (answer.textContent == errorMessage){
+                return;
+            }
             // clears screen when inputting second number
             if (expression.secondNumber === null){
                 answer.textContent = '';
@@ -90,6 +93,14 @@ digitButtons.forEach(button => {
                 return;
             }
             if (getNumber == 'C'){
+                if (answer.textContent == errorMessage){
+                    expression.equalValue = null;
+                    expression.firstNumber = null;
+                    expression.operator = '';
+                    expression.secondNumber = null;
+                    answer.textContent = '';
+                    calculations.textContent = '';
+                }
                 answer.textContent = answer.textContent.slice(0, -1);
                 getNumber = '';
                 if (answer.textContent == ''){
@@ -143,13 +154,20 @@ equalButton.addEventListener('click', () => {
         }
     
     let expressionAnswer = operate(expression.operator, expression.firstNumber, expression.secondNumber);
+ 
+    if ((expressionAnswer == Infinity) || (Number.isNaN(expressionAnswer))){
+        answer.textContent = errorMessage;
+        calculations.textContent = `${expression.firstNumber} ${expression.operator} ${expression.secondNumber}`;
+        return;
+    }
 
     let fixedAnswer;
+    
     if (expressionAnswer.toString().length > 9){
         fixedAnswer = expressionAnswer.toExponential(0);
     } else {
         fixedAnswer = Number(expressionAnswer.toFixed(3));
-    }
+    } 
     answer.textContent = fixedAnswer;
     calculations.textContent = `${expression.firstNumber} ${expression.operator} ${expression.secondNumber}`;
     expression.equalValue = fixedAnswer;
@@ -163,3 +181,5 @@ allClear.addEventListener('click', () => {
     calculations.textContent = '';
     answer.textContent = '';
 })
+
+let errorMessage = 'um ... T^T';
