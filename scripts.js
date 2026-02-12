@@ -163,10 +163,10 @@ equalButton.addEventListener('click', () => {
 
     let fixedAnswer;
     
-    if (expressionAnswer.toString().length > 9){
-        fixedAnswer = expressionAnswer.toExponential(0);
-    } else {
+    if (expressionAnswer < 999999999) {
         fixedAnswer = Number(expressionAnswer.toFixed(3));
+    } else {
+        fixedAnswer = expressionAnswer.toExponential(0);
     } 
     answer.textContent = fixedAnswer;
     calculations.textContent = `${expression.firstNumber} ${expression.operator} ${expression.secondNumber}`;
