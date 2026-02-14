@@ -33,7 +33,6 @@ To keep the display clean, I added automatic rounding and scientific notation fo
 
 # Future improvement plans
 - Add keyboard support
-- Add a button for positive/negative sign
 
 # Attributions
 
