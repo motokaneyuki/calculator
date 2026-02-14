@@ -34,6 +34,15 @@ function operate(operator, firstNumber, secondNumber){
     }
 }
 
+function clearAllValues() {
+    expression.equalValue = null;
+    expression.firstNumber = null;
+    expression.operator = '';
+    expression.secondNumber = null;
+    answer.textContent = '';
+    calculations.textContent = '';
+}
+
 let expression = {
     firstNumber: null,
     operator: '',
@@ -52,12 +61,7 @@ digitButtons.forEach(button => {
                 answer.textContent = -(Number(answer.textContent));
                 return expression.equalValue = answer.textContent;
             }
-            expression.equalValue = null;
-            expression.firstNumber = null;
-            expression.operator = '';
-            expression.secondNumber = null;
-            answer.textContent = '';
-            calculations.textContent = '';
+            clearAllValues();
         }
 
         if (answer.textContent.length == 9){
@@ -115,12 +119,7 @@ digitButtons.forEach(button => {
             }
             if (getNumber == 'C'){
                 if (answer.textContent == errorMessage){
-                    expression.equalValue = null;
-                    expression.firstNumber = null;
-                    expression.operator = '';
-                    expression.secondNumber = null;
-                    answer.textContent = '';
-                    calculations.textContent = '';
+                    clearAllValues();
                 }
                 answer.textContent = answer.textContent.slice(0, -1);
                 getNumber = '';
@@ -217,12 +216,7 @@ equalButton.addEventListener('click', () => {
 })
 
 allClear.addEventListener('click', () => {
-    expression.firstNumber = null;
-    expression.operator = '';
-    expression.secondNumber = null;
-    expression.equalValue = null;
-    calculations.textContent = '';
-    answer.textContent = '';
+    clearAllValues();
 })
 
 let errorMessage = 'um ... T^T';
