@@ -21,14 +21,14 @@ Backspace (C): Click the backspace button to remove the last digit you typed if 
 Clear (AC): Use the clear button to wipe everything and start a completely fresh calculation.
 
 ### Large Results 
-If your answer is very long, the calculator will automatically round the decimals or switch to scientific notation so it doesn't run off the edge of the screen.
+If your answer is too long for the display, it will switch to scientific notation so it doesn't run off the edge of the screen.
 
 # Learning outcomes
-As the final project for The Odin Project’s <a href="https://www.theodinproject.com/paths/foundations/courses/foundations">Foundations path</a>, this calculator shows everything I've learned so far in HTML, CSS, and JavaScript. 
+As the final project for The Odin Project’s <a href="https://www.theodinproject.com/paths/foundations/courses/foundations">Foundations path</a>, I tried to use most of what I've learned so far in HTML, CSS, and JavaScript. 
 
 I built it by keeping track of numbers and symbols behind the scenes so the calculator always knows what to do next. I also wrote special rules to stop common mistakes, like typing two decimals at once, being able to erase a digit from the answer, or breaking the app by dividing by zero. 
 
-To keep the display clean, I added automatic rounding and scientific notation for huge results. I also made sure the calculator could chain multiple operations together and reset instantly with a clear button, making it feel smooth and easy to use.
+To keep the display clean, I added scientific notation for huge results. I also made sure the calculator could chain multiple operations together and reset instantly with a clear button, making it feel smooth and easy to use.
 
 
 # Future improvement plans

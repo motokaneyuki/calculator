@@ -200,12 +200,16 @@ equalButton.addEventListener('click', () => {
     }
 
     let fixedAnswer;
-    
-    if (expressionAnswer < 999999999 && expressionAnswer > -99999999 ) {
-        fixedAnswer = Number(expressionAnswer.toFixed(3));
+
+    if (Math.abs(expressionAnswer) < 999999999){
+        fixedAnswer = Number(expressionAnswer.toPrecision(9));
+        if (fixedAnswer.toString().length > 10){
+            fixedAnswer = expressionAnswer.toExponential(0);
+        }
     } else {
-        fixedAnswer = expressionAnswer.toExponential(0);
-    } 
+        fixedAnswer = expressionAnswer.toExponential(4);
+    }
+
     answer.textContent = fixedAnswer;
     calculations.textContent = `${expression.firstNumber} ${expression.operator} ${expression.secondNumber}`;
     expression.equalValue = fixedAnswer;
