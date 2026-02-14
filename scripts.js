@@ -43,8 +43,14 @@ let expression = {
 
 digitButtons.forEach(button => {
     button.addEventListener('click', (e) => {
-        // when digit clicked again after equals, clear values
+        let getNumber = e.target.textContent;
+
+        // when digit clicked again after equals
         if (answer.textContent == expression.equalValue){
+            if (getNumber == '+ / -'){
+                answer.textContent = -(Number(answer.textContent));
+                return expression.equalValue = answer.textContent;
+            }
             expression.equalValue = null;
             expression.firstNumber = null;
             expression.operator = '';
@@ -52,8 +58,6 @@ digitButtons.forEach(button => {
             answer.textContent = '';
             calculations.textContent = '';
         }
-
-        let getNumber = e.target.textContent;
 
         if (answer.textContent.length == 9){
             if (getNumber == 'C'){
@@ -76,6 +80,15 @@ digitButtons.forEach(button => {
                 if (answer.textContent == ''){
                     expression.firstNumber = null;
                     return;
+                }
+            }
+
+            if (getNumber == '+ / -'){
+                if (!answer.textContent){
+                    getNumber = '-';
+                } else {
+                    answer.textContent = -(Number(answer.textContent));
+                    return expression.firstNumber = answer.textContent;
                 }
             }
 
@@ -106,6 +119,15 @@ digitButtons.forEach(button => {
                 if (answer.textContent == ''){
                     expression.secondNumber = null;
                     return;
+                }
+            }
+
+            if (getNumber == '+ / -'){
+                if (!answer.textContent){
+                    getNumber = '-';
+                } else {
+                    answer.textContent = -(Number(answer.textContent));
+                    return expression.secondNumber = answer.textContent;
                 }
             }
             
