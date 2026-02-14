@@ -69,6 +69,10 @@ digitButtons.forEach(button => {
                 answer.textContent = answer.textContent.slice(0, -1);
                 return;    
             }
+            if (getNumber == '+ / -'){
+                answer.textContent = -(Number(answer.textContent));
+                return;
+            }
             alert('Maximum input is 9 digits')
             return;
         }
