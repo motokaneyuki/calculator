@@ -193,7 +193,7 @@ equalButton.addEventListener('click', () => {
 
     let fixedAnswer;
     
-    if (expressionAnswer < 999999999) {
+    if (expressionAnswer < 999999999 && expressionAnswer > -99999999 ) {
         fixedAnswer = Number(expressionAnswer.toFixed(3));
     } else {
         fixedAnswer = expressionAnswer.toExponential(0);
