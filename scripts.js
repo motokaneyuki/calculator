@@ -169,7 +169,7 @@ operatorButtons.forEach(button => {
         // if operator button is clicked with first&second values, do:
         if (expression.firstNumber !== null && expression.operator !== '' && expression.secondNumber !== null) {
             let expressionAnswer = operate(expression.operator, expression.firstNumber, expression.secondNumber);
-            let fixedAnswer = Number(expressionAnswer.toFixed(3));
+            let fixedAnswer = Number(expressionAnswer.toPrecision(9));
             expression.firstNumber = fixedAnswer;
             expression.secondNumber = null;
             expression.operator = '';
@@ -200,11 +200,13 @@ equalButton.addEventListener('click', () => {
     }
 
     let fixedAnswer;
+    let answerLength = expressionAnswer.toString().length;
 
     if (Math.abs(expressionAnswer) < 999999999){
-        fixedAnswer = Number(expressionAnswer.toPrecision(9));
-        if (fixedAnswer.toString().length > 10){
+        if (answerLength > 10){
             fixedAnswer = expressionAnswer.toExponential(0);
+        } else {
+            fixedAnswer = Number(expressionAnswer.toPrecision(9));
         }
     } else {
         fixedAnswer = expressionAnswer.toExponential(4);
