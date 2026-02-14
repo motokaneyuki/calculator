@@ -156,7 +156,8 @@ digitButtons.forEach(button => {
 operatorButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         if (expression.firstNumber === null 
-            || answer.textContent == '-'){
+            || answer.textContent == '-' 
+            || answer.textContent == '.'){
             return;
         }
 
@@ -189,7 +190,8 @@ equalButton.addEventListener('click', () => {
     if (expression.firstNumber === null 
         || expression.secondNumber === null 
         || expression.operator === '' 
-        || answer.textContent == '-'){
+        || answer.textContent == '-' 
+        || answer.textContent == '.'){
             return;
         }
     
