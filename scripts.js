@@ -48,6 +48,7 @@ digitButtons.forEach(button => {
         // when digit clicked again after equals
         if (answer.textContent == expression.equalValue){
             if (getNumber == '+ / -'){
+                if (answer.textContent.includes('e')) return;
                 answer.textContent = -(Number(answer.textContent));
                 return expression.equalValue = answer.textContent;
             }
@@ -191,7 +192,7 @@ equalButton.addEventListener('click', () => {
             return;
         }
     
-    let expressionAnswer = operate(expression.operator, expression.firstNumber, expression.secondNumber);
+    let expressionAnswer = operate(expression.operator, Number(expression.firstNumber), expression.secondNumber);
  
     if ((expressionAnswer == Infinity) || (Number.isNaN(expressionAnswer))){
         answer.textContent = errorMessage;
