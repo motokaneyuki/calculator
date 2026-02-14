@@ -87,6 +87,9 @@ digitButtons.forEach(button => {
                 if (!answer.textContent){
                     getNumber = '-';
                 } else {
+                    if (answer.textContent == '-'){
+                        return answer.textContent = '';
+                    }
                     answer.textContent = -(Number(answer.textContent));
                     return expression.firstNumber = answer.textContent;
                 }
@@ -130,6 +133,9 @@ digitButtons.forEach(button => {
                 if (!answer.textContent){
                     getNumber = '-';
                 } else {
+                    if (answer.textContent == '-'){
+                        return answer.textContent = '';
+                    }
                     answer.textContent = -(Number(answer.textContent));
                     return expression.secondNumber = answer.textContent;
                 }
