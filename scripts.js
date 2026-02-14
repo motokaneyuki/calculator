@@ -92,6 +92,10 @@ digitButtons.forEach(button => {
                 }
             }
 
+            if (answer.textContent == '0'){
+                answer.textContent = '';
+            }            
+
             answer.textContent += getNumber;
             expression.firstNumber = Number(answer.textContent);
         } else {
@@ -129,6 +133,10 @@ digitButtons.forEach(button => {
                     answer.textContent = -(Number(answer.textContent));
                     return expression.secondNumber = answer.textContent;
                 }
+            }
+            
+            if (answer.textContent == '0'){
+                answer.textContent = '';
             }
             
             answer.textContent += getNumber;
